@@ -11,24 +11,24 @@ class entry:
             self.intage=0
         self.job=job
     def printData(self):
-        if not "!!" in self.age:
+        if not "!!" in self.age: # check for year mode
             print(f"""Name: {self.name}\nAge: {self.age} years old\nJob: {self.job}""")
         else:
             print(f"""Name: {self.name}\nAge: {self.age[2:len(self.age)]}\nJob: {self.job}""")
         
-default=entry("L-DOS X DB","!!!2022","Database program for L-DOS X.")
-database=[default]
+default=entry("L-DOS X DB","!!!2022","Database program for L-DOS X.") # the default entry in every file
+database=[default] # the database itself
 
 while True:
     choice=input("Press N for a new person.\nPress V to view a person. \nPress A to view a summary of all entries.\nPress E to edit an entry.\nPress X to exit.\nChoice: ").lower()
-    if choice=="n":
+    if choice=="n": # check that
         database.append(entry(input("Name: "),input("Age: "),input("Job: ")))
     if choice=="v":
         pid=input("Person ID: ")
         try:
             print(database[int(pid)].printData())
         except IndexError or TypeError:
-            print("That person does not exist.")
+            print("That person does not exist.") # oh god
     if choice=="a":
         for i in range(len(database)):
             print(f"{i}: {database[i].name}")
@@ -43,9 +43,9 @@ while True:
             if choice=="j":
                 database[int(pid)].job=input("New data: ")
             else:
-                print("Invalid choice entered.")
+                print("Invalid choice entered.") # oh crap
         except IndexError or TypeError:
             print("An error occured.")
     if choice=="x":
-        print("Closing L-DOS X DB.")
+        print("Closing L-DOS X DB.") # bye bye
         break
